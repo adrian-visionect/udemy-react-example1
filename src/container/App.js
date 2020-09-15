@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from './components/Person';
+// import Person from '../components/Persons/Person/Person';
 import styled from 'styled-components';
+import Persons from '../components/Persons/Persons';
 
 const StyledButton = styled.button`
   background-color: green;
@@ -69,17 +70,11 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
-            return (
-              <Person
-                key={person.id}
-                name={person.name}
-                age={person.age}
-                click={() => this.deletePerson(index)}
-                changed={(event) => this.switchNameHandler(event, person.id)}
-              />
-            );
-          })}
+          <Persons
+            persons={this.state.persons}
+            click={this.deletePerson}
+            changed={this.switchNameHandler}
+          />
         </div>
       );
     }
